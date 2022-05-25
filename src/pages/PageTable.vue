@@ -110,7 +110,7 @@ export default {
 				false,	false,	//БЛ	ЧЛ
 				false,	false,	//БЭ	ЧЭ
 				false,	false,	//БИ	ЧИ
-				false,	false		//БС	ЧС
+				false,	false	//БС	ЧС
 			],
 		}
 	},
