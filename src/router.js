@@ -7,6 +7,7 @@ var routes = [
 	{ path: '/calc', name: 'Calc', meta: { title: 'Калькулятор' } },
 	{ path: '/table', name: 'Table', meta: { title: 'Таблица' } },
 	{ path: '/funcs', name: 'Funcs', meta: { title: 'Функции' } },
+	{ path: '/test', name: 'Test', meta: { title: 'Test' } },
 	{ path: '/:catchAll(.*)', redirect: '/calc' },
 ]
 
