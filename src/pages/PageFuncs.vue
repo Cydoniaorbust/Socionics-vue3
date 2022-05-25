@@ -29,6 +29,21 @@
 							&& selectFunc(i) === false,
 					}]"
 					@click="pressFunc(i)"> {{ func }} </button></div>		
+			<div class="props">
+				<div class="props-head">
+					<div class="tumbler" @click="switchProp(2)">
+						<div class="slider" :class="{ active: propActive[2] }"></div>
+					</div>
+					<span> Другое </span></div>
+				<div class="prop" v-for="(a, i) in other" :key="i" v-show="propActive[2]">
+					<span> {{ a.name }} </span>
+					<div class="options">
+						<Option name="" :optionList="a.cont"
+							:active="funcPress === null ? null : a.seq[funcPress]"
+							:press="propPress" :pressId="22+i*2"
+							:callback="pressProp"/>
+					</div>
+				</div></div>
 		</div>
 		<div class="right">
 			<div class="props">
@@ -57,8 +72,9 @@ export default {
 		return {
 			ls: null,
 
-			propActive: [1, 1, 1, 1],
+			propActive: [1, 1, 1],
 			supProps: funcs.supProps,
+			other: funcs.other,
 			props: funcs.props,
 
 			funcNames: mock.Socionics.funcs,
@@ -73,6 +89,8 @@ export default {
 				0, 0,		//шабл 16
 				0, 0,		//акцп
 				0, 0,		//мент 21
+
+				0, 0,		//блоки 22-23
 			]
 		}
 	},
@@ -104,6 +122,12 @@ export default {
 				if (this.propPress[16+i*2] == 1) {
 					propsPressed++;
 					if (this.propPress[16+i*2+1] != this.supProps[i].seq[select]) return false;
+				}
+			}
+			for (let i = 0; i < 1; i++) {
+				if (this.propPress[22+i*2] == 1) {
+					propsPressed++;
+					if (this.propPress[22+i*2+1] != this.other[i].seq[select]) return false;
 				}
 			}
 
