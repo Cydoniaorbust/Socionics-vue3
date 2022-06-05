@@ -193,7 +193,7 @@
 	@media (any-hover: none) { .legend { visibility: collapse; } }
 	@media only screen and (max-width: 845px) {
 		#table.container { flex-wrap: wrap; }
-		th, td { padding: 5; }
+		th, td { padding: 5px; }
 	}
 	@media only screen and (max-width: 610px) { th, td { padding: 0; } }
 	@media only screen and (max-width: 375px) { #table .container { margin: 5px 0; } }
