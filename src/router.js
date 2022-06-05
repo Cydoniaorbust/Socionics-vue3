@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// const routes = [
-// 	{ path: '/about', name: 'about', component: () => import('../views/AboutView.vue') }
-// ]
 var routes = [
 	{ path: '/calc', name: 'Calc', meta: { title: 'Калькулятор' } },
 	{ path: '/table', name: 'Table', meta: { title: 'Таблица' } },

@@ -1,5 +1,6 @@
 <template>
 	<main id="table" class="container">
+		
 		<div id="slider">
 			<transition-group tag="div" :name="transitionName" class="slides-group">
 				<div v-if="show" :key="current" class="slide" :class="slides[current].className">

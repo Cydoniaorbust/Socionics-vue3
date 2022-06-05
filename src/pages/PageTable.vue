@@ -1,5 +1,6 @@
 <template>
 	<main id="table" class="container">
+		
 		<div class="container l-menu">
 				<div class="tumblerWrap">
 					<span>Легенда</span>
