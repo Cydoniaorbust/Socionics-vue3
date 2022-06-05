@@ -7,12 +7,8 @@
 					<p>I'm {{slides[current].className}}!</p>
 				</div>
 			</transition-group>
-			<div class="btn btn-prev" aria-label="Previous slide" @click="slide(-1)">
-				&#10094;
-			</div>
-			<div class="btn btn-next" aria-label="Next slide" @click="slide(1)">
-				&#10095;
-			</div>
+			<div class="btn btn-prev" @click="slide(-1)">&#10094;</div>
+			<div class="btn btn-next" @click="slide(1)">&#10095;</div>
 		</div>
 	</main>
 </template>
@@ -40,12 +36,7 @@
 .yellow { background: #f6b93b; }
 
 /* SLIDER STYLES */
-body {
-	overflow: hidden;
-	margin: 0;
-	font-size: 50px;
-	color: #fff;
-}
+body { overflow: hidden; }
 
 #slider {
 	width: 100%;
