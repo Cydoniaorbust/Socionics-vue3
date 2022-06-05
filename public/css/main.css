@@ -52,6 +52,12 @@
 		border-radius: 5px;
 		overflow: hidden;
 	}
+	.separator {
+		display: block; 
+		
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+	}
 	/* слайдер */
 		.tumbler {
 			align-self: center;

@@ -14,8 +14,8 @@ button.jazz.pressed {					background: #af4f7f;	color: #f2ebb8; }
 .tumbler {								background: #222222; }
 .tumbler:hover {																box-shadow: 0 0 10px 1px rgba(255,255,255,.1); }
 .slider {								background: #f2ebb8; }
-
-.prop:nth-child(n+2) {															border: 1px solid #363636; }
+.separator {																	border-bottom: 2px solid #363636; }
+.prop:nth-child(n+2) {															border-top: 1px solid #363636; }
 
 #header, #footer {						background: #222222; }
 #head-menu a, #f1 span {										color: inherit; }
