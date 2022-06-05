@@ -3,19 +3,17 @@
 		<div class="left">
 			<div class="props">
 				<div class="props-head">
-					<div class="tumbler" @click="switchProp(1)">
-						<div class="slider" :class="{ active: propActive[1] }"></div>
+					<div class="tumbler" @click="switchProp(0)">
+						<div class="slider" :class="{ active: propActive[0] }"></div>
 					</div>
 					<span> Свойства </span></div>
-				<div class="prop" v-for="(a, i) in supProps" :key="i" v-show="propActive[1]">
-					<span> {{ a.name }} </span>
-					<div class="options">
-						<Option name="" :optionList="a.cont"
-							:active="funcPress === null ? null : a.seq[funcPress]"
-							:press="propPress" :pressId="16+i*2"
-							:callback="pressProp"/>
-					</div>
-				</div></div>			
+				<div class="prop" v-for="(a, i) in props" :key="i" v-show="propActive[0]">
+					<div class="separator"></div>
+					<Option name="" :optionList="a.cont"
+						:active="funcPress === null ? null : a.seq[funcPress]"
+						:press="propPress" :pressId="i*2"
+						:callback="pressProp"/>
+				</div></div>
 		</div>
 		<div class="center">
 			<div class="icons">
@@ -31,31 +29,29 @@
 					@click="pressFunc(i)"> {{ func }} </button></div>		
 			<div class="props">
 				<div class="props-head">
-					<div class="tumbler" @click="switchProp(2)">
-						<div class="slider" :class="{ active: propActive[2] }"></div>
+					<div class="tumbler" @click="switchProp(1)">
+						<div class="slider" :class="{ active: propActive[1] }"></div>
 					</div>
 					<span> Другое </span></div>
-				<div class="prop" v-for="(a, i) in other" :key="i" v-show="propActive[2]">
+				<div class="prop" v-for="(a, i) in other" :key="i" v-show="propActive[1]">
 					<span> {{ a.name }} </span>
-					<div class="options">
-						<Option name="" :optionList="a.cont"
-							:active="funcPress === null ? null : a.seq[funcPress]"
-							:press="propPress" :pressId="22+i*2"
-							:callback="pressProp"/>
-					</div>
+					<Option name="" :optionList="a.cont"
+						:active="funcPress === null ? null : a.seq[funcPress]"
+						:press="propPress" :pressId="16+i*2"
+						:callback="pressProp"/>
 				</div></div>
 		</div>
 		<div class="right">
 			<div class="props">
 				<div class="props-head">
-					<div class="tumbler" @click="switchProp(0)">
-						<div class="slider" :class="{ active: propActive[0] }"></div></div>
+					<div class="tumbler" @click="switchProp(2)">
+						<div class="slider" :class="{ active: propActive[2] }"></div></div>
 					<span> Свойства 2 </span></div>
-				<div class="prop" v-for="(a, i) in props" :key="i" v-show="propActive[0]">
-					<span v-if="a.name"> {{ a.name }} </span>
+				<div class="prop" v-for="(a, i) in supProps" :key="i" v-show="propActive[2]">
+					<div class="separator"></div>
 					<Option name="" :optionList="a.cont"
 						:active="funcPress === null ? null : a.seq[funcPress]"
-						:press="propPress" :pressId="i*2"
+						:press="propPress" :pressId="18+i*2"
 						:callback="pressProp"/>
 				</div></div>
 		</div>
@@ -73,9 +69,9 @@ export default {
 			ls: null,
 
 			propActive: [1, 1, 1],
-			supProps: funcs.supProps,
-			other: funcs.other,
 			props: funcs.props,
+			other: funcs.other,
+			supProps: funcs.supProps,
 
 			funcNames: mock.Socionics.funcs,
 
@@ -86,11 +82,11 @@ export default {
 				0, 0, 0, 0,	//инрт
 				0, 0, 0, 0,	//загр 15
 
-				0, 0,		//шабл 16
-				0, 0,		//акцп
-				0, 0,		//мент 21
+				0, 0,		//блоки 16
 
-				0, 0,		//блоки 22-23
+				0, 0,		//акцп 18
+				0, 0,		//мент
+				0, 0,		//шабл 23
 			]
 		}
 	},
@@ -118,18 +114,18 @@ export default {
 					if (this.propPress[i*2+1] != this.props[i].seq[select]) return false;
 				}
 			}
-			for (let i = 0; i < 3; i++) {
+			for (let i = 0; i < 1; i++) {
 				if (this.propPress[16+i*2] == 1) {
 					propsPressed++;
-					if (this.propPress[16+i*2+1] != this.supProps[i].seq[select]) return false;
+					if (this.propPress[16+i*2+1] != this.other[i].seq[select]) return false;
 				}
 			}
-			for (let i = 0; i < 1; i++) {
-				if (this.propPress[22+i*2] == 1) {
+			for (let i = 0; i < 3; i++) {
+				if (this.propPress[18+i*2] == 1) {
 					propsPressed++;
-					if (this.propPress[22+i*2+1] != this.other[i].seq[select]) return false;
+					if (this.propPress[18+i*2+1] != this.supProps[i].seq[select]) return false;
 				}
-			}
+			}			
 
 			return propsPressed == 0 ? null : true;
 		},
