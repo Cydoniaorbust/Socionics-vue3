@@ -172,6 +172,15 @@
 		}
 		.aspect { width: 25%; }
 		.sub-aspect { width: 12.5%; }
+/* Test2 */
+	#test2 .prop-half {
+		display: flex;
+		justify-content: space-evenly;
+	}
+	#test2 .icons button { width: calc(25% - 2px); }
+	#test2 .prop { width: calc(25% - 2px); }
+	#test2 .option button { width: calc(50% - 2px); }
+
 
 /* coloring + animation */
 	.all.active {
