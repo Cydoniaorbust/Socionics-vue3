@@ -13,12 +13,11 @@
 					&& active !== i,
 			}]"
 			@click="callback(pressId, i)"
-			@mouseover="nameBool = false"
-			@mouseleave="nameBool = true"
 		> {{ a }}
-		<!-- {{ nameBool ? a : name2[i] }} -->
-			<div v-show="!nameBool" class="iconHolder">
-				<div v-for="(b, j) in name2[i]" :key="j" :class="'icon ' + b"><br><br> {{ b }} </div>
+			<div class="iconHolder">
+				<div v-for="(b, j) in name2[i]" :key="j" :class="'icon ' + b"
+				><br><br> {{ b }}
+				</div>
 			</div>
 		</button>
 	</div>
@@ -37,11 +36,5 @@ export default {
 
 		callback: Function,
 	},
-
-	data() {
-		return {
-			nameBool: true,
-		}
-	}
 }
 </script>
