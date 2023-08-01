@@ -63,6 +63,27 @@
 				</div></div>			
 		</div>
 		<div class="right">
+			<!-- <div class="container r-menu">
+				<div class="tumblerWrap">
+					<span>Легенда</span>
+					<div class="tumbler" @click="switchLegend">
+						<div class="slider" :class="{ active: legend }"></div></div></div>
+				<div class="tumblerWrap">
+					<span>Socionics/MBTI</span>
+					<div class="tumbler" @click="switchMBTI">
+						<div class="slider" :class="{ active: MBTI }"></div></div></div>
+				<select v-model="selected">
+					<option :value="null" @change="selected = null"> Reset </option>
+					<option v-for="type in types" :key="type.id"
+						:value="type.id" @change="selected = type.id"> {{
+							notation.aliases[type.id]+ "--" +
+							notation.names[type.id]
+						}} </option></select>
+				<select v-model="grouping" v-show="!MBTI">
+					<option v-for="gs, i in notation.groupsList" :key="i"
+						:value="i" @change="grouping = i">
+					{{ gs[0].name + '/' + gs[1].name }} </option></select>
+			</div> -->
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(2)">
