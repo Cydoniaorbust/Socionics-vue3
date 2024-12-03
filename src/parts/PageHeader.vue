@@ -5,6 +5,8 @@
 			<router-link to="/table">Таблица</router-link>
 			<router-link to="/funcs">Функции</router-link>
 			<router-link to="/test2">Тест2</router-link>
+			<router-link to="/game">2048</router-link>
+
 		</nav>
 		<ThemeSwitcher />
 	</header>

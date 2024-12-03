@@ -202,7 +202,29 @@
 	#test2 .icons button { width: calc(25% - 2px); }
 	#test2 .prop { width: calc(25% - 2px); }
 	#test2 .option button { width: calc(50% - 2px); }
+/* Game */
+	#game .board {
+		width: calc(75% - 2px);
+		height: calc(75% - 2px);
 
+		padding: 10px;
+
+		background: #444444;
+	}
+	#game .tile { 
+		display: flex;
+		flex-flow: row;
+
+		width: calc(25% - 2px);
+		height: calc(25% - 2px);
+
+		padding: 10px;
+
+		background-color: #ffffff; 
+	}
+	#game .active { 
+		flex-flow: row-reverse;
+	}
 
 /* coloring + animation */
 	.all.active {
