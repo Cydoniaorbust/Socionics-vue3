@@ -10,7 +10,7 @@ import Footer from './parts/PageFooter.vue'
 
 export default {
 	data() {
-		return { v: '0.018' }
+		return { v: '0.019' }
 	},
 	components: {
 		Header, Footer

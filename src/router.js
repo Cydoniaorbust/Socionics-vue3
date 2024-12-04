@@ -5,6 +5,9 @@ var routes = [
 	{ path: '/table', name: 'Table', meta: { title: 'Таблица' } },
 	{ path: '/funcs', name: 'Funcs', meta: { title: 'Функции' } },
 	{ path: '/test', name: 'Test', meta: { title: 'Test' } },
+	{ path: '/test2', name: 'Test2', meta: { title: 'Test2' } },
+	{ path: '/game', name: 'Game2048', meta: { title: '2048' } },
+
 	{ path: '/:catchAll(.*)', redirect: '/calc' },
 ]
 

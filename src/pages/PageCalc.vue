@@ -1,6 +1,5 @@
 <template>
 	<main id="calc" class="container">
-
 		<div class="left">
 			<div class="props">
 				<div class="props-head">
@@ -9,9 +8,11 @@
 					</div>
 					<span> Свойства </span></div>
 				<div class="prop" v-for="(a, i) in supProps" :key="i" v-show="propActive[1]">
+					<!-- @mouseover="desc[i] = true" @mouseleave="desc[i] = false" -->
 					<span> {{ a.name }} </span>
+					<!-- <div v-show="desc[i]"> {{ a.cont2 }} </div> -->
 					<div class="options">
-						<Option name="" :optionList="a.cont"
+						<Option name="" :optionList="a.cont" :name2="a.cont2"
 							:active="selectProp(a)"
 							:press="propPress" :pressId="16+i*2"
 							:callback="pressProp"/>
@@ -24,7 +25,7 @@
 					<span> Свойства 2 </span></div>
 				<div class="prop" v-for="(a, i) in props" :key="i" v-show="propActive[0]">
 					<span v-if="a.name"> {{ a.name }} </span>
-					<Option name="" :optionList="a.cont"
+					<Option name="" :optionList="a.cont" :name2="a.cont2"
 						:active="selectProp(a)"
 						:press="propPress" :pressId="i*2"
 						:callback="pressProp"/>
@@ -41,7 +42,10 @@
 							&& selectType(i) !== null
 							&& selectType(i) === false,
 					}]"
-					@click="pressType(i)"> {{ type }} </button></div>
+					@click="pressType(i)"
+					> {{ type }} 
+				</button>
+			</div>
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(3)">
@@ -51,7 +55,7 @@
 				<div class="prop" v-for="(a, i) in groups" :key="i" v-show="propActive[3]">
 					<span> {{ a.name }} </span>
 					<div class="options">
-						<Option name="" :optionList="a.cont"
+						<Option name="" :optionList="a.cont" :name2="a.cont2"
 							:active="selectProp(a)"
 							:press="propPress" :pressId="30+i*2"
 							:callback="pressProp"/>
@@ -59,6 +63,27 @@
 				</div></div>			
 		</div>
 		<div class="right">
+			<!-- <div class="container r-menu">
+				<div class="tumblerWrap">
+					<span>Легенда</span>
+					<div class="tumbler" @click="switchLegend">
+						<div class="slider" :class="{ active: legend }"></div></div></div>
+				<div class="tumblerWrap">
+					<span>Socionics/MBTI</span>
+					<div class="tumbler" @click="switchMBTI">
+						<div class="slider" :class="{ active: MBTI }"></div></div></div>
+				<select v-model="selected">
+					<option :value="null" @change="selected = null"> Reset </option>
+					<option v-for="type in types" :key="type.id"
+						:value="type.id" @change="selected = type.id"> {{
+							notation.aliases[type.id]+ "--" +
+							notation.names[type.id]
+						}} </option></select>
+				<select v-model="grouping" v-show="!MBTI">
+					<option v-for="gs, i in notation.groupsList" :key="i"
+						:value="i" @change="grouping = i">
+					{{ gs[0].name + '/' + gs[1].name }} </option></select>
+			</div> -->
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(2)">
@@ -68,7 +93,7 @@
 				<div class="prop" v-for="(a, i) in falseProps" :key="i" v-show="propActive[2]">
 					<span> {{ a.name }} </span>
 					<div class="options">
-						<Option name="" :optionList="a.cont"
+						<Option name="" :optionList="a.cont" :name2="a.cont2"
 							:active="selectProp(a)"
 							:press="propPress" :pressId="22+i*2"
 							:callback="pressProp"/>
@@ -127,7 +152,8 @@ export default {
 				0, 0,		//темп
 				0, 0,		//аргу
 				0, 0,		//стре 45
-			]
+			],
+			// desc: [0,0,0,0, 0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0],
 		}
 	},
 	computed: {
@@ -145,8 +171,21 @@ export default {
 
 			this.ls.setItem('propActive', JSON.stringify(this.propActive));
 		},
+		selectTypeHelper(select, array, shift) {
+			let propsPressed = 0;
+
+			for (let i = 0; i < array.length; i++) {
+
+				if (this.propPress[shift+i*2] == 1) {
+					propsPressed++;
+					if (this.propPress[shift+i*2+1] != array[i].seq[select]) return false;
+				}
+			}
+			return propsPressed;
+		},
 		selectType(select) {
 			let propsPressed = 0;
+			// let tmp = 0;
 
 			for (let i = 0; i < 8; i++) {
 				if (this.propPress[i*2] == 1) {
@@ -173,8 +212,19 @@ export default {
 				}
 			}
 
+			// tmp == this.selectTypeHelper(select, this.props, 0);
+
+			// if(tmp === false) return false; else propsPressed += tmp;
+			// tmp == this.selectTypeHelper(select, this.supProps, 16);
+			// if(tmp === false) return false; else propsPressed += tmp;
+			// tmp == this.selectTypeHelper(select, this.falseProps, 22);
+			// if(tmp === false) return false; else propsPressed += tmp;
+			// tmp == this.selectTypeHelper(select, this.groups, 30);
+			// if(tmp === false) return false; else propsPressed += tmp;
+			// console.log(propsPressed);
+
 			return propsPressed == 0 ? null : true;
-		},
+		},		
 		selectProp(select) {
 			let value = null;
 
