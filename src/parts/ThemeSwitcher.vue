@@ -21,7 +21,7 @@ export default {
 			this.applyTheme();
 		},
 		applyTheme() {
-			this.link.setAttribute('href', `${process.env.BASE_URL}/css/${this.theme}.css?${this.$root.v}`);
+			this.link.setAttribute('href', `../../css/${this.theme}.css?${this.$root.v}`);
 			this.isActive = (this.theme === 'light') ? false : true;
 		}
 	},

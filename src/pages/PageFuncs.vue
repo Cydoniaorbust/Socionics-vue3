@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import funcs from '@/store/funcs.js'
-import mock from '@/store/mock.js'
-import Option from '@/parts/PageOption.vue'
+import funcs from '../store/funcs.js'
+import mock from '../store/mock.js'
+import Option from '../parts/PageOption.vue'
 
 export default {
 	data() {

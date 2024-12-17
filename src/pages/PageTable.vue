@@ -90,8 +90,8 @@
 </template>
 
 <script>
-import mock from '@/store/mock.js'
-import LegendLabel from '@/parts/LegendLabel.vue'
+import mock from '../store/mock.js'
+import LegendLabel from '../parts/LegendLabel.vue'
 
 export default {
 	data() {

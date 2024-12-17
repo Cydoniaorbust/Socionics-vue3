@@ -13,11 +13,12 @@ var routes = [
 
 routes.forEach(route => {
 	if (route.name)
-		route.component = () => import(`@/pages/Page${route.name}.vue`)
+		route.component = () => import(`./pages/Page${route.name}.vue`)
 })
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
+	// history: createWebHistory(process.env.BASE_URL),
+	history: createWebHistory(),
 	routes
 })
 

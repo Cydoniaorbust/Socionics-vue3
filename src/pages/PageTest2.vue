@@ -50,9 +50,9 @@
 </template>
 
 <script>
-import text from '@/store/text.js'
-import mock from '@/store/mock.js'
-import Option from '@/parts/PageOption.vue'
+import text from '../store/text.js'
+import mock from '../store/mock.js'
+import Option from '../parts/PageOption.vue'
 
 export default {
 	data() {
