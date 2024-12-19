@@ -6,46 +6,36 @@
 					<div class="tumbler" @click="switchProp(1)">
 						<div class="slider" :class="{ active: propActive[1] }"></div>
 					</div>
-					<span> Свойства </span></div>
+					<span> Свойства </span>
+				</div>
 				<div class="prop" v-for="(a, i) in supProps" :key="i" v-show="propActive[1]">
 					<!-- @mouseover="desc[i] = true" @mouseleave="desc[i] = false" -->
-					<span> {{ a.name }} </span>
 					<!-- <div v-show="desc[i]"> {{ a.cont2 }} </div> -->
-					<div class="options">
-						<Option name="" :optionList="a.cont" :name2="a.cont2"
-							:active="selectProp(a)"
-							:press="propPress" :pressId="16+i*2"
-							:callback="pressProp"/>
-					</div>
-				</div></div>
+					<Option :name="a.name" :optionList="a.cont" :name2="a.cont2"
+						:active="selectProp(a)"
+						:press="propPress" :pressId="16+i*2"
+						:callback="pressProp"/>
+				</div>
+			</div>
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(0)">
 						<div class="slider" :class="{ active: propActive[0] }"></div></div>
 					<span> Свойства 2 </span></div>
 				<div class="prop" v-for="(a, i) in props" :key="i" v-show="propActive[0]">
-					<span v-if="a.name"> {{ a.name }} </span>
-					<Option name="" :optionList="a.cont" :name2="a.cont2"
+					<!-- <span v-if="a.name"> {{ a.name }} </span> -->
+					<Option :name="a.name" :optionList="a.cont" :name2="a.cont2"
 						:active="selectProp(a)"
 						:press="propPress" :pressId="i*2"
 						:callback="pressProp"/>
 				</div></div>
 		</div>
 		<div class="center">
-			<div class="icons">
-				<button v-for="type, i in typeNames" :key="i"
-					:class="[{ 
-						active: selectType(i) === true,
-						pressed: typePress[i] === 1,
-						jazz:
-							typePress[i] === 1
-							&& selectType(i) !== null
-							&& selectType(i) === false,
-					}]"
-					@click="pressType(i)"
-					> {{ type }} 
-				</button>
-			</div>
+			<MultiChoice name="Типы" :optionList="typeNames"
+				:active="selectType"
+				:press="typePress"
+				:callback="pressType"/>
+
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(3)">
@@ -53,13 +43,10 @@
 					</div>
 					<span> Малые группы </span></div>
 				<div class="prop" v-for="(a, i) in groups" :key="i" v-show="propActive[3]">
-					<span> {{ a.name }} </span>
-					<div class="options">
-						<Option name="" :optionList="a.cont" :name2="a.cont2"
-							:active="selectProp(a)"
-							:press="propPress" :pressId="30+i*2"
-							:callback="pressProp"/>
-					</div>
+					<Option :name="a.name" :optionList="a.cont" :name2="a.cont2"
+						:active="selectProp(a)"
+						:press="propPress" :pressId="30+i*2"
+						:callback="pressProp"/>
 				</div></div>			
 		</div>
 		<div class="right">
@@ -109,6 +96,7 @@
 import text from '../store/text.js'
 import mock from '../store/mock.js'
 import Option from '../parts/PageOption.vue'
+import MultiChoice from  '../parts/PageMultiChoice.vue'
 
 export default {
 	data() {
@@ -265,7 +253,7 @@ export default {
 		catch (e) { return; }
 	},
 	components: {
-		Option
+		Option, MultiChoice
 	},
 }	
 </script>

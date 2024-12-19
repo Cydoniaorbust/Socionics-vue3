@@ -1,4 +1,5 @@
 <template>
+	<span v-if="name"> {{ name }} </span>
 	<div class="option">
 		<button v-for="(a, i) in optionList" :key="i"
 			:class="[{

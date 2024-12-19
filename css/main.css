@@ -155,12 +155,17 @@
 		display: flex;
 		flex-flow: row wrap;
 	}
-	#calc .option button { width: calc(50% - 2px); }
-	#calc .center button { width: calc(25% - 2px); }
 	.icons button {
 		height: 60px;
 		border-radius: 5px;
 	}
+	#calc .option button {
+		width: calc(50% - 2px);
+		height: 60px;
+		border-radius: 5px;
+	}
+	#calc .center button { width: calc(25% - 2px); }
+	
 /* Table */
 	#table { 
 		width: 100%;
