@@ -1,20 +1,10 @@
 <template>
 	<main id="test2" class="container">
-
 		<div class="center">
-			<div class="icons">
-				<button v-for="type, i in typeNames" :key="i"
-					:class="[{ 
-						active: selectType(i) === true,
-						pressed: typePress[i] === 1,
-						jazz:
-							typePress[i] === 1
-							&& selectType(i) !== null
-							&& selectType(i) === false,
-					}]"
-					@click="pressType(i)"> {{ type }} 
-				</button>
-			</div>
+			<MultiChoice class="icons" name="Типы" :optionList="typeNames"
+				:active="selectType"
+				:press="typePress"
+				:callback="pressType"/>
 			<div class="props">
 				<div class="props-head">
 					<div class="tumbler" @click="switchProp(1)">
@@ -53,6 +43,7 @@
 import text from '../store/text.js'
 import mock from '../store/mock.js'
 import Option from '../parts/PageOption.vue'
+import MultiChoice from  '../parts/PageMultiChoice.vue'
 
 export default {
 	data() {
@@ -154,7 +145,7 @@ export default {
 		catch (e) { return; }
 	},
 	components: {
-		Option
+		Option, MultiChoice
 	},
 }	
 </script>

@@ -159,11 +159,7 @@
 		height: 60px;
 		border-radius: 5px;
 	}
-	#calc .option button {
-		width: calc(50% - 2px);
-		height: 60px;
-		border-radius: 5px;
-	}
+	#calc .option button { width: calc(50% - 2px); }
 	#calc .center button { width: calc(25% - 2px); }
 	
 /* Table */
@@ -204,9 +200,9 @@
 		display: flex;
 		justify-content: space-evenly;
 	}
-	#test2 .icons button { width: calc(25% - 2px); }
-	#test2 .prop { width: calc(25% - 2px); }
 	#test2 .option button { width: calc(50% - 2px); }
+	#test2 .center button { width: calc(25% - 2px); }
+	#test2 .prop { width: calc(25% - 2px); }
 /* Game */
 	#game .board {
 		width: calc(75% - 2px);
