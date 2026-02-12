@@ -7,6 +7,7 @@ var routes = [
 	{ path: '/test', name: 'Test', meta: { title: 'Test' } },
 	{ path: '/test2', name: 'Test2', meta: { title: 'Test2' } },
 	{ path: '/game', name: 'Game2048', meta: { title: '2048' } },
+	{ path: '/psychosophy', name: 'Psychosophy', meta: { title: 'Psychosophy' } },
 
 	{ path: '/:catchAll(.*)', redirect: '/calc' },
 ]
