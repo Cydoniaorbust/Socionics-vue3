@@ -109,12 +109,12 @@
 	#calc .iconHolder {
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content: space-evenly;
+		justify-content: space-around;
 	}
 	#calc .icon {
 		width: 24px;
 		height: 24px;
-		margin: 6px 0 14px 0;
+		margin: 6px 0 25px 0;
 
 	}
 	#calc .ЧЭ { background: center/cover url('../images/ЧЭ.png'); }
